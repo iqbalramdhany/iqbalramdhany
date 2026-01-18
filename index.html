@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Iqbal Ramdhany | Phantom Thief Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --p5-red: #ff0000;
+            --p5-black: #0d0d0d;
+            --p5-dark: #1a1a1a;
+            --p5-darker: #0a0a0a;
+            --p5-white: #ffffff;
+            --p5-gold: #ffd700;
+            --p5-crimson: #dc143c;
+            --accent-glow: rgba(255, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--p5-darker);
+            color: var(--p5-white);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255, 0, 0, 0.03) 10px,
+                    rgba(255, 0, 0, 0.03) 20px
+                ),
+                linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0d0d0d 100%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--p5-red), transparent);
+        }
+
+        .persona-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 8px;
+            color: var(--p5-red);
+            text-shadow: 
+                0 0 20px var(--accent-glow),
+                0 0 40px var(--accent-glow);
+            margin-bottom: 10px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow); }
+            to { text-shadow: 0 0 30px var(--p5-red), 0 0 60px var(--p5-red); }
+        }
+
+        .name {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--p5-white) 0%, var(--p5-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--p5-red);
+            letter-spacing: 4px;
+            border: 2px solid var(--p5-red);
+            display: inline-block;
+            padding: 8px 20px;
+            margin-top: 15px;
+        }
+
+        /* Cards */
+        .card {
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(13, 13, 13, 0.95));
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 
+                0 10px 40px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: var(--p5-red);
+            box-shadow: 
+                0 15px 50px rgba(0, 0, 0, 0.6),
+                0 0 30px var(--accent-glow);
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--p5-red);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--p5-red), transparent);
+        }
+
+        /* Two Column Layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Stats Bar */
+        .stat-item {
+            margin: 15px 0;
+        }
+
+        .stat-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .stat-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .stat-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--p5-crimson), var(--p5-red));
+            border-radius: 4px;
+            box-shadow: 0 0 15px var(--accent-glow);
+            animation: fillBar 1.5s ease-out forwards;
+        }
+
+        @keyframes fillBar {
+            from { width: 0; }
+        }
+
+        /* Info Table */
+        .info-table {
+            width: 100%;
+        }
+
+        .info-row {
+            display: flex;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-label {
+            width: 150px;
+            color: var(--p5-gold);
+            font-weight: 600;
+        }
+
+        .info-value {
+            flex: 1;
+            color: var(--p5-white);
+        }
+
+        /* Games Grid */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .game-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: scale(1.05);
+            border-color: var(--p5-red);
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        .game-card img {
+            width: 120px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 2px solid var(--p5-red);
+        }
+
+        .game-card h3 {
+            color: var(--p5-red);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .game-card p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin: 5px 0;
+        }
+
+        .game-card .quote {
+            font-style: italic;
+            color: var(--p5-gold);
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        /* Crystal Voltage Section */
+        .crystal-section {
+            background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), rgba(220, 20, 60, 0.1));
+            border-color: var(--p5-gold);
+        }
+
+        .crystal-section .card-title {
+            color: var(--p5-gold);
+        }
+
+        /* Learning Path Table */
+        .learning-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .learning-table th {
+            background: rgba(255, 0, 0, 0.2);
+            color: var(--p5-red);
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .learning-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .status-progress {
+            color: #ffd700;
+        }
+
+        .status-planned {
+            color: #87ceeb;
+        }
+
+        .status-future {
+            color: #98fb98;
+        }
+
+        /* Social Boxes */
+        .social-box {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .social-box.online {
+            border: 2px solid #00ff88;
+        }
+
+        .social-box.offline {
+            border: 2px solid #ff6b6b;
+        }
+
+        .social-box h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .social-box.online h3 {
+            color: #00ff88;
+        }
+
+        .social-box.offline h3 {
+            color: #ff6b6b;
+        }
+
+        .social-item {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .social-quote {
+            margin-top: 20px;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Team Banner */
+        .team-banner {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.05));
+            border: 2px solid var(--p5-gold);
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .team-name {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--p5-gold);
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            letter-spacing: 5px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 50px 20px;
+            border-top: 1px solid rgba(255, 0, 0, 0.2);
+            margin-top: 50px;
+        }
+
+        .footer-quote {
+            font-size: 1.1rem;
+            color: var(--p5-red);
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 2px solid var(--p5-red);
+            display: inline-block;
+        }
+
+        .footer-credit {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .footer-credit strong {
+            color: var(--p5-gold);
+        }
+
+        /* Connect Button */
+        .connect-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--p5-crimson), var(--p5-red));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px var(--accent-glow);
+        }
+
+        .connect-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="persona-title">⚡ PERSONA STYLE ⚡</div>
+            <h1 class="name">🎭 MUHAMMAD IQBAL RAMDHANY 🎭</h1>
+            <p class="tagline">✨ "Take Your Time... But Never Give Up!" ✨</p>
+            <div class="subtitle">🃏 PHANTOM THIEF PROFILE 🃏</div>
+        </header>
+
+        <!-- Personal Data & Stats -->
+        <div class="two-col">
+            <div class="card">
+                <h2 class="card-title">🎭 PERSONAL DATA</h2>
+                <div class="info-table">
+                    <div class="info-row">
+                        <span class="info-label">🏷️ Nama</span>
+                        <span class="info-value">Muhammad Iqbal Ramdhany</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">🎂 Tanggal Lahir</span>
+                        <span class="info-value">24 Agustus 2010</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">⭐ Zodiak</span>
+                        <span class="info-value">Virgo ♍</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">💼 Team</span>
+                        <span class="info-value"><strong>HELIOS.CORP</strong></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">🎯 Cita-cita</span>
+                        <span class="info-value">Game Developer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">🔥 STATS</h2>
+                <div class="stat-item">
+                    <div class="stat-label"><span>CREATIVITY</span><span>90%</span></div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 90%"></div></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label"><span>GAMING SKILL</span><span>95%</span></div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 95%"></div></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label"><span>STORYTELLING</span><span>100%</span></div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 100%"></div></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label"><span>ONLINE SOCIAL</span><span>95%</span></div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 95%"></div></div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label"><span>DETERMINATION</span><span>100%</span></div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 100%"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Me -->
+        <div class="card">
+            <h2 class="card-title">🎮 ABOUT ME</h2>
+            <blockquote style="border-left: 3px solid var(--p5-gold); padding-left: 20px; margin-bottom: 20px; font-style: italic; color: var(--p5-gold);">
+                "Setiap cerita hebat dimulai dari imajinasi yang berani bermimpi"
+            </blockquote>
+            <p style="line-height: 1.8; color: rgba(255,255,255,0.85);">
+                Halo! Aku <strong style="color: var(--p5-red);">Iqbal</strong>, seorang remaja yang bersemangat dalam dunia <strong>game development</strong> dan <strong>storytelling</strong>. 
+                Meskipun aku sedikit kesulitan untuk memulai percakapan secara langsung di dunia nyata, aku justru sangat mudah berteman di dunia online — terutama dengan orang-orang yang memiliki <strong style="color: var(--p5-gold);">kesamaan minat</strong> denganku!
+            </p>
+        </div>
+
+        <!-- Crystal Voltage -->
+        <div class="card crystal-section">
+            <h2 class="card-title">✨ MAIN HOBBY - STORYTELLING</h2>
+            <h3 style="font-size: 1.8rem; color: var(--p5-gold); text-align: center; margin: 20px 0;">📖 CRYSTAL VOLTAGE ⚡</h3>
+            <p style="text-align: center; line-height: 1.8; color: rgba(255,255,255,0.85);">
+                Ini adalah <strong style="color: var(--p5-gold);">cerita original</strong> buatanku sendiri yang sangat aku banggakan!<br><br>
+                Aku selalu bersemangat setiap kali mengembangkan dunia, karakter, dan alur cerita <strong>Crystal Voltage</strong>. 
+                Menulis cerita adalah cara terbaik bagiku untuk mengekspresikan imajinasi dan kreativitas!
+            </p>
+            <blockquote style="text-align: center; margin-top: 25px; font-style: italic; color: var(--p5-gold); font-size: 1.1rem;">
+                "Cerita adalah jendela menuju dunia yang tak terbatas" ⚡
+            </blockquote>
+        </div>
+
+        <!-- Favorite Games -->
+        <div class="card">
+            <h2 class="card-title">🎮 TOP 3 FAVORITE GAMES</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/b/b0/Persona_5_Royal.jpg" alt="Persona 5 Royal">
+                    <h3>🃏 PERSONA 5 ROYAL</h3>
+                    <p><strong>Genre:</strong> JRPG</p>
+                    <p><strong>Platform:</strong> PlayStation, PC</p>
+                    <p class="quote">"You'll never see it coming!"</p>
+                </div>
+                <div class="game-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/5/5d/Genshin_Impact_cover.jpg" alt="Genshin Impact">
+                    <h3>⚔️ GENSHIN IMPACT</h3>
+                    <p><strong>Genre:</strong> Action RPG</p>
+                    <p><strong>Platform:</strong> Multi-platform</p>
+                    <p class="quote">"May the wind guide you!"</p>
+                </div>
+                <div class="game-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Roblox_player_icon_black.svg/200px-Roblox_player_icon_black.svg.png" alt="Roblox" style="background: white; padding: 20px;">
+                    <h3>🎲 ROBLOX</h3>
+                    <p><strong>Genre:</strong> Game Platform</p>
+                    <p><strong>Platform:</strong> Multi-platform</p>
+                    <p class="quote">"Imagination is everything!"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dream & Journey -->
+        <div class="card">
+            <h2 class="card-title">🚀 MY DREAM & JOURNEY</h2>
+            <h3 style="color: var(--p5-white); margin-bottom: 20px;">🎯 GOAL: GAME DEVELOPER</h3>
+            <p style="margin-bottom: 30px; color: rgba(255,255,255,0.85);">
+                Cita-citaku adalah menjadi seorang <strong style="color: var(--p5-red);">Game Developer</strong> profesional! Aku sudah memiliki nama team sendiri:
+            </p>
+            
+            <div class="team-banner">
+                <div class="team-name">☀️ HELIOS.CORP ☀️</div>
+            </div>
+
+            <h3 style="color: var(--p5-white); margin: 30px 0 20px;">📚 Learning Path:</h3>
+            <table class="learning-table">
+                <tr>
+                    <th>Platform</th>
+                    <th>Status</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>🎲 <strong>Roblox Studio</strong></td>
+                    <td class="status-progress">🔄 In Progress</td>
+                    <td>Memulai membuat game pertama di Roblox</td>
+                </tr>
+                <tr>
+                    <td>🎮 <strong>Unity</strong></td>
+                    <td class="status-planned">📋 Planned</td>
+                    <td>Mempelajari engine profesional</td>
+                </tr>
+                <tr>
+                    <td>💡 <strong>Crystal Voltage Game</strong></td>
+                    <td class="status-future">🌟 Future Goal</td>
+                    <td>Mengubah ceritaku menjadi game!</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Personality & Social -->
+        <div class="card">
+            <h2 class="card-title">🤝 PERSONALITY & SOCIAL</h2>
+            <div class="two-col">
+                <div class="social-box online">
+                    <h3>🌐 ONLINE WORLD</h3>
+                    <div class="social-item">✅ Easy to connect</div>
+                    <div class="social-item">✅ Find similar minds</div>
+                    <div class="social-item">✅ Share interests</div>
+                    <div class="social-item">✅ Build friendships</div>
+                    <p class="social-quote">"Di dunia online, aku menemukan banyak teman yang satu frekuensi!"</p>
+                </div>
+                <div class="social-box offline">
+                    <h3>🏠 OFFLINE WORLD</h3>
+                    <div class="social-item">⚠️ Shy to start talk</div>
+                    <div class="social-item">⚠️ Hard to approach</div>
+                    <div class="social-item">💪 Still trying!</div>
+                    <div class="social-item">🌱 Growing everyday</div>
+                    <p class="social-quote">"Meski sulit, aku terus berusaha untuk lebih berani!"</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Connect -->
+        <div class="card" style="text-align: center;">
+            <h2 class="card-title" style="justify-content: center;">💫 CONNECT WITH ME</h2>
+            <h3 style="color: var(--p5-white); margin: 20px 0;">🎮 Let's Be Friends!</h3>
+            <p style="margin-bottom: 30px; color: rgba(255,255,255,0.85); max-width: 600px; margin-left: auto; margin-right: auto;">
+                Jika kamu memiliki <strong style="color: var(--p5-gold);">kesamaan minat</strong> denganku — baik itu tentang game, storytelling, atau game development — jangan ragu untuk berteman denganku!
+            </p>
+            <p style="font-style: italic; color: var(--p5-gold); font-size: 1.1rem;">
+                "Bersama, kita bisa menciptakan sesuatu yang luar biasa!" ✨
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-quote">
+                🎭 "THE WORLD IS NOT AS IT SHOULD BE... BUT I'LL CHANGE IT!" 🎭<br>
+                <span style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">— INSPIRED BY PHANTOM THIEVES —</span>
+            </div>
+            <p class="footer-credit">
+                <strong>© 2026 Muhammad Iqbal Ramdhany | ☀️ HELIOS.CORP ☀️</strong><br><br>
+                Made with ❤️ and Persona 5 vibes<br><br>
+                🃏 <em>Looking Cool, Joker!</em> 🃏
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
