@@ -59,7 +59,7 @@
         /* Header Section */
         .header {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
             position: relative;
         }
 
@@ -75,7 +75,7 @@
         }
 
         .persona-title {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 900;
             letter-spacing: 8px;
             color: var(--p5-red);
@@ -97,30 +97,122 @@
         }
 
         .name {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--p5-white) 0%, var(--p5-gold) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin: 20px 0;
+            margin: 15px 0;
         }
 
         .tagline {
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-style: italic;
             color: rgba(255, 255, 255, 0.7);
             margin-bottom: 10px;
         }
 
-        .subtitle {
-            font-size: 1rem;
+        /* ==================== TAB NAVIGATION ==================== */
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), transparent);
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(13, 13, 13, 0.95));
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            border-radius: 50px;
+            padding: 12px 25px;
+            color: var(--p5-white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--p5-red);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px var(--accent-glow);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--p5-crimson), var(--p5-red));
+            border-color: var(--p5-red);
+            box-shadow: 0 0 30px var(--accent-glow), 0 5px 20px rgba(0, 0, 0, 0.5);
+            transform: scale(1.05);
+        }
+
+        .tab-btn .icon {
+            font-size: 1.2rem;
+        }
+
+        /* ==================== TAB CONTENT CONTAINER ==================== */
+        .tab-content-wrapper {
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+        }
+
+        .tab-content {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .tab-content.active {
+            position: relative;
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+        }
+
+        .tab-content.slide-out-left {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        .tab-content.slide-in-right {
+            transform: translateX(100%);
+        }
+
+        /* Tab Header */
+        .tab-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(145deg, rgba(255, 0, 0, 0.1), rgba(220, 20, 60, 0.05));
+            border-radius: 15px;
+            border: 1px solid rgba(255, 0, 0, 0.2);
+        }
+
+        .tab-header h2 {
+            font-size: 1.8rem;
             color: var(--p5-red);
-            letter-spacing: 4px;
-            border: 2px solid var(--p5-red);
-            display: inline-block;
-            padding: 8px 20px;
-            margin-top: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .tab-header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
         }
 
         /* Cards */
@@ -129,7 +221,7 @@
             border: 1px solid rgba(255, 0, 0, 0.2);
             border-radius: 15px;
             padding: 30px;
-            margin: 30px 0;
+            margin: 20px 0;
             box-shadow:
                 0 10px 40px rgba(0, 0, 0, 0.5),
                 inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -171,6 +263,19 @@
         @media (max-width: 768px) {
             .two-col {
                 grid-template-columns: 1fr;
+            }
+
+            .tab-navigation {
+                gap: 8px;
+            }
+
+            .tab-btn {
+                padding: 10px 15px;
+                font-size: 0.8rem;
+            }
+
+            .name {
+                font-size: 1.6rem;
             }
         }
 
@@ -392,47 +497,47 @@
         /* Footer */
         .footer {
             text-align: center;
-            padding: 50px 20px;
+            padding: 40px 20px;
             border-top: 1px solid rgba(255, 0, 0, 0.2);
-            margin-top: 50px;
+            margin-top: 30px;
         }
 
         .footer-quote {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--p5-red);
             font-weight: 600;
             margin-bottom: 20px;
-            padding: 20px;
+            padding: 15px;
             border: 2px solid var(--p5-red);
             display: inline-block;
         }
 
         .footer-credit {
             color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .footer-credit strong {
             color: var(--p5-gold);
         }
 
-        /* Connect Button */
-        .connect-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            background: linear-gradient(135deg, var(--p5-crimson), var(--p5-red));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px var(--accent-glow);
+        /* Connect Section */
+        .connect-card {
+            text-align: center;
+            padding: 40px;
         }
 
-        .connect-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px var(--accent-glow);
+        .connect-message {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .connect-highlight {
+            color: var(--p5-gold);
+            font-weight: 600;
         }
     </style>
 </head>
@@ -446,207 +551,329 @@
             <div class="persona-title">⚡ PERSONA STYLE ⚡</div>
             <h1 class="name">🎭 MUHAMMAD IQBAL RAMDHANY 🎭</h1>
             <p class="tagline">✨ "Take Your Time... But Never Give Up!" ✨</p>
-            <div class="subtitle">🃏 PHANTOM THIEF PROFILE 🃏</div>
         </header>
 
-        <!-- Personal Data & Stats -->
-        <div class="two-col">
-            <div class="card">
-                <h2 class="card-title">🎭 PERSONAL DATA</h2>
-                <div class="info-table">
-                    <div class="info-row">
-                        <span class="info-label">🏷️ Nama</span>
-                        <span class="info-value">Muhammad Iqbal Ramdhany</span>
+        <!-- Tab Navigation -->
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="home">
+                <span class="icon">🏠</span>
+                <span>Home</span>
+            </button>
+            <button class="tab-btn" data-tab="about">
+                <span class="icon">👤</span>
+                <span>About Me</span>
+            </button>
+            <button class="tab-btn" data-tab="hobi">
+                <span class="icon">✨</span>
+                <span>Hobi</span>
+            </button>
+            <button class="tab-btn" data-tab="games">
+                <span class="icon">🎮</span>
+                <span>Games</span>
+            </button>
+            <button class="tab-btn" data-tab="dream">
+                <span class="icon">🚀</span>
+                <span>Dream</span>
+            </button>
+            <button class="tab-btn" data-tab="social">
+                <span class="icon">🤝</span>
+                <span>Social</span>
+            </button>
+        </nav>
+
+        <!-- Tab Content Wrapper -->
+        <div class="tab-content-wrapper">
+
+            <!-- HOME TAB -->
+            <div class="tab-content active" id="home">
+                <div class="tab-header">
+                    <h2>🃏 PHANTOM THIEF PROFILE 🃏</h2>
+                    <p>Selamat datang di profil digitalku yang terinspirasi dari Persona 5!</p>
+                </div>
+
+                <div class="two-col">
+                    <div class="card">
+                        <h2 class="card-title">🎭 PERSONAL DATA</h2>
+                        <div class="info-table">
+                            <div class="info-row">
+                                <span class="info-label">🏷️ Nama</span>
+                                <span class="info-value">Muhammad Iqbal Ramdhany</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">🎂 Tanggal Lahir</span>
+                                <span class="info-value">24 Agustus 2010</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">⭐ Zodiak</span>
+                                <span class="info-value">Virgo ♍</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">💼 Team</span>
+                                <span class="info-value"><strong>HELIOS.CORP</strong></span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">🎯 Cita-cita</span>
+                                <span class="info-value">Game Developer</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="info-row">
-                        <span class="info-label">🎂 Tanggal Lahir</span>
-                        <span class="info-value">24 Agustus 2010</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">⭐ Zodiak</span>
-                        <span class="info-value">Virgo ♍</span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">💼 Team</span>
-                        <span class="info-value"><strong>HELIOS.CORP</strong></span>
-                    </div>
-                    <div class="info-row">
-                        <span class="info-label">🎯 Cita-cita</span>
-                        <span class="info-value">Game Developer</span>
+
+                    <div class="card">
+                        <h2 class="card-title">🔥 STATS</h2>
+                        <div class="stat-item">
+                            <div class="stat-label"><span>CREATIVITY</span><span>90%</span></div>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label"><span>GAMING SKILL</span><span>95%</span></div>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label"><span>STORYTELLING</span><span>100%</span></div>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label"><span>ONLINE SOCIAL</span><span>95%</span></div>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-label"><span>DETERMINATION</span><span>100%</span></div>
+                            <div class="stat-bar">
+                                <div class="stat-fill" style="width: 100%"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="card">
-                <h2 class="card-title">🔥 STATS</h2>
-                <div class="stat-item">
-                    <div class="stat-label"><span>CREATIVITY</span><span>90%</span></div>
-                    <div class="stat-bar">
-                        <div class="stat-fill" style="width: 90%"></div>
-                    </div>
+            <!-- ABOUT ME TAB -->
+            <div class="tab-content" id="about">
+                <div class="tab-header">
+                    <h2>👤 ABOUT ME 👤</h2>
+                    <p>Kenalan lebih dekat denganku!</p>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-label"><span>GAMING SKILL</span><span>95%</span></div>
-                    <div class="stat-bar">
-                        <div class="stat-fill" style="width: 95%"></div>
-                    </div>
+
+                <div class="card">
+                    <blockquote
+                        style="border-left: 3px solid var(--p5-gold); padding-left: 20px; margin-bottom: 20px; font-style: italic; color: var(--p5-gold); font-size: 1.2rem;">
+                        "Setiap cerita hebat dimulai dari imajinasi yang berani bermimpi"
+                    </blockquote>
+                    <p style="line-height: 1.8; color: rgba(255,255,255,0.85); font-size: 1.1rem;">
+                        Halo! Aku <strong style="color: var(--p5-red);">Iqbal</strong>, seorang remaja berusia 15 tahun
+                        yang lahir pada 24 Agustus 2010.
+                        Aku sangat bersemangat dalam dunia <strong>game development</strong> dan
+                        <strong>storytelling</strong>.
+                    </p>
+                    <br>
+                    <p style="line-height: 1.8; color: rgba(255,255,255,0.85);">
+                        Zodiak-ku adalah <strong style="color: var(--p5-gold);">Virgo ♍</strong>, yang katanya dikenal
+                        dengan sifat perfeksionis dan detail-oriented.
+                        Mungkin itu sebabnya aku sangat menikmati proses membuat cerita dan mengembangkan dunia
+                        imajinatif!
+                    </p>
+                    <br>
+                    <p style="line-height: 1.8; color: rgba(255,255,255,0.85);">
+                        Meski aku sedikit kesulitan untuk memulai percakapan secara langsung di dunia nyata,
+                        aku justru sangat mudah berteman di dunia online — terutama dengan orang-orang yang memiliki
+                        <strong style="color: var(--p5-gold);">kesamaan minat</strong> denganku!
+                    </p>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-label"><span>STORYTELLING</span><span>100%</span></div>
-                    <div class="stat-bar">
-                        <div class="stat-fill" style="width: 100%"></div>
-                    </div>
+
+                <div class="card connect-card">
+                    <h3 style="color: var(--p5-red); margin-bottom: 20px;">🎮 Let's Be Friends!</h3>
+                    <p class="connect-message">
+                        Jika kamu memiliki <span class="connect-highlight">kesamaan minat</span> denganku —
+                        baik itu tentang game, storytelling, atau game development — jangan ragu untuk berteman
+                        denganku!
+                    </p>
+                    <p style="font-style: italic; color: var(--p5-gold); font-size: 1.1rem; margin-top: 20px;">
+                        "Bersama, kita bisa menciptakan sesuatu yang luar biasa!" ✨
+                    </p>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-label"><span>ONLINE SOCIAL</span><span>95%</span></div>
-                    <div class="stat-bar">
-                        <div class="stat-fill" style="width: 95%"></div>
-                    </div>
+            </div>
+
+            <!-- HOBI TAB -->
+            <div class="tab-content" id="hobi">
+                <div class="tab-header">
+                    <h2>✨ HOBI & STORYTELLING ✨</h2>
+                    <p>Passion terbesarku dalam berkreasi!</p>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-label"><span>DETERMINATION</span><span>100%</span></div>
-                    <div class="stat-bar">
-                        <div class="stat-fill" style="width: 100%"></div>
+
+                <div class="card crystal-section">
+                    <h2 class="card-title">📖 CRYSTAL VOLTAGE ⚡</h2>
+                    <p style="text-align: center; line-height: 1.8; color: rgba(255,255,255,0.85); font-size: 1.1rem;">
+                        Ini adalah <strong style="color: var(--p5-gold);">cerita original</strong> buatanku sendiri yang
+                        sangat aku banggakan!
+                    </p>
+                    <br>
+                    <p style="text-align: center; line-height: 1.8; color: rgba(255,255,255,0.85);">
+                        Aku selalu bersemangat setiap kali mengembangkan dunia, karakter, dan alur cerita
+                        <strong>Crystal Voltage</strong>.
+                        Menulis cerita adalah cara terbaik bagiku untuk mengekspresikan imajinasi dan kreativitas!
+                    </p>
+                    <blockquote
+                        style="text-align: center; margin-top: 30px; font-style: italic; color: var(--p5-gold); font-size: 1.2rem; padding: 20px; border: 1px solid var(--p5-gold); border-radius: 10px;">
+                        "Cerita adalah jendela menuju dunia yang tak terbatas" ⚡
+                    </blockquote>
+                </div>
+
+                <div class="card">
+                    <h2 class="card-title">🎨 Kenapa Storytelling?</h2>
+                    <div style="line-height: 1.8; color: rgba(255,255,255,0.85);">
+                        <p style="margin-bottom: 15px;">
+                            <strong style="color: var(--p5-red);">1. Ekspresi Kreativitas</strong><br>
+                            Melalui cerita, aku bisa menciptakan dunia baru dengan aturan dan karakter unik.
+                        </p>
+                        <p style="margin-bottom: 15px;">
+                            <strong style="color: var(--p5-red);">2. Pengembangan Karakter</strong><br>
+                            Setiap karakter di Crystal Voltage memiliki latar belakang dan motivasi yang mendalam.
+                        </p>
+                        <p style="margin-bottom: 15px;">
+                            <strong style="color: var(--p5-red);">3. Fondasi Game Development</strong><br>
+                            Cerita yang kuat adalah fondasi untuk game yang memorable!
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- About Me -->
-        <div class="card">
-            <h2 class="card-title">🎮 ABOUT ME</h2>
-            <blockquote
-                style="border-left: 3px solid var(--p5-gold); padding-left: 20px; margin-bottom: 20px; font-style: italic; color: var(--p5-gold);">
-                "Setiap cerita hebat dimulai dari imajinasi yang berani bermimpi"
-            </blockquote>
-            <p style="line-height: 1.8; color: rgba(255,255,255,0.85);">
-                Halo! Aku <strong style="color: var(--p5-red);">Iqbal</strong>, seorang remaja yang bersemangat dalam
-                dunia <strong>game development</strong> dan <strong>storytelling</strong>.
-                Meskipun aku sedikit kesulitan untuk memulai percakapan secara langsung di dunia nyata, aku justru
-                sangat mudah berteman di dunia online — terutama dengan orang-orang yang memiliki <strong
-                    style="color: var(--p5-gold);">kesamaan minat</strong> denganku!
-            </p>
-        </div>
-
-        <!-- Crystal Voltage -->
-        <div class="card crystal-section">
-            <h2 class="card-title">✨ MAIN HOBBY - STORYTELLING</h2>
-            <h3 style="font-size: 1.8rem; color: var(--p5-gold); text-align: center; margin: 20px 0;">📖 CRYSTAL VOLTAGE
-                ⚡</h3>
-            <p style="text-align: center; line-height: 1.8; color: rgba(255,255,255,0.85);">
-                Ini adalah <strong style="color: var(--p5-gold);">cerita original</strong> buatanku sendiri yang sangat
-                aku banggakan!<br><br>
-                Aku selalu bersemangat setiap kali mengembangkan dunia, karakter, dan alur cerita <strong>Crystal
-                    Voltage</strong>.
-                Menulis cerita adalah cara terbaik bagiku untuk mengekspresikan imajinasi dan kreativitas!
-            </p>
-            <blockquote
-                style="text-align: center; margin-top: 25px; font-style: italic; color: var(--p5-gold); font-size: 1.1rem;">
-                "Cerita adalah jendela menuju dunia yang tak terbatas" ⚡
-            </blockquote>
-        </div>
-
-        <!-- Favorite Games -->
-        <div class="card">
-            <h2 class="card-title">🎮 TOP 3 FAVORITE GAMES</h2>
-            <div class="games-grid">
-                <div class="game-card">
-                    <img src="assets/persona5.png" alt="Persona 5 Royal">
-                    <h3>🃏 PERSONA 5 ROYAL</h3>
-                    <p><strong>Genre:</strong> JRPG</p>
-                    <p><strong>Platform:</strong> PlayStation, PC</p>
-                    <p class="quote">"You'll never see it coming!"</p>
+            <!-- GAMES TAB -->
+            <div class="tab-content" id="games">
+                <div class="tab-header">
+                    <h2>🎮 TOP 3 FAVORITE GAMES 🎮</h2>
+                    <p>Game-game yang menginspirasi perjalananku!</p>
                 </div>
-                <div class="game-card">
-                    <img src="assets/genshin.png" alt="Genshin Impact">
-                    <h3>⚔️ GENSHIN IMPACT</h3>
-                    <p><strong>Genre:</strong> Action RPG</p>
-                    <p><strong>Platform:</strong> Multi-platform</p>
-                    <p class="quote">"May the wind guide you!"</p>
+
+                <div class="games-grid">
+                    <div class="game-card">
+                        <img src="assets/persona5.png" alt="Persona 5 Royal">
+                        <h3>🃏 PERSONA 5 ROYAL</h3>
+                        <p><strong>Genre:</strong> JRPG</p>
+                        <p><strong>Platform:</strong> PlayStation, PC</p>
+                        <p class="quote">"You'll never see it coming!"</p>
+                    </div>
+                    <div class="game-card">
+                        <img src="assets/genshin.png" alt="Genshin Impact">
+                        <h3>⚔️ GENSHIN IMPACT</h3>
+                        <p><strong>Genre:</strong> Action RPG</p>
+                        <p><strong>Platform:</strong> Multi-platform</p>
+                        <p class="quote">"May the wind guide you!"</p>
+                    </div>
+                    <div class="game-card">
+                        <img src="assets/roblox.png" alt="Roblox">
+                        <h3>🎲 ROBLOX</h3>
+                        <p><strong>Genre:</strong> Game Platform</p>
+                        <p><strong>Platform:</strong> Multi-platform</p>
+                        <p class="quote">"Imagination is everything!"</p>
+                    </div>
                 </div>
-                <div class="game-card">
-                    <img src="assets/roblox.png" alt="Roblox">
-                    <h3>🎲 ROBLOX</h3>
-                    <p><strong>Genre:</strong> Game Platform</p>
-                    <p><strong>Platform:</strong> Multi-platform</p>
-                    <p class="quote">"Imagination is everything!"</p>
+
+                <div class="card" style="margin-top: 30px;">
+                    <h2 class="card-title">💭 Kenapa Game Ini?</h2>
+                    <p style="line-height: 1.8; color: rgba(255,255,255,0.85);">
+                        <strong style="color: var(--p5-crimson);">Persona 5 Royal</strong> mengajarkanku tentang
+                        storytelling yang kuat dan desain karakter yang memorable.
+                        <strong style="color: #87ceeb);">Genshin Impact</strong> menunjukkan betapa indahnya open-world
+                        exploration.
+                        Dan <strong style="color: var(--p5-gold);">Roblox</strong> adalah tempat aku belajar membuat
+                        game pertamaku!
+                    </p>
                 </div>
             </div>
-        </div>
 
-        <!-- Dream & Journey -->
-        <div class="card">
-            <h2 class="card-title">🚀 MY DREAM & JOURNEY</h2>
-            <h3 style="color: var(--p5-white); margin-bottom: 20px;">🎯 GOAL: GAME DEVELOPER</h3>
-            <p style="margin-bottom: 30px; color: rgba(255,255,255,0.85);">
-                Cita-citaku adalah menjadi seorang <strong style="color: var(--p5-red);">Game Developer</strong>
-                profesional! Aku sudah memiliki nama team sendiri:
-            </p>
-
-            <div class="team-banner">
-                <div class="team-name">☀️ HELIOS.CORP ☀️</div>
-            </div>
-
-            <h3 style="color: var(--p5-white); margin: 30px 0 20px;">📚 Learning Path:</h3>
-            <table class="learning-table">
-                <tr>
-                    <th>Platform</th>
-                    <th>Status</th>
-                    <th>Description</th>
-                </tr>
-                <tr>
-                    <td>🎲 <strong>Roblox Studio</strong></td>
-                    <td class="status-progress">🔄 In Progress</td>
-                    <td>Memulai membuat game pertama di Roblox</td>
-                </tr>
-                <tr>
-                    <td>🎮 <strong>Unity</strong></td>
-                    <td class="status-planned">📋 Planned</td>
-                    <td>Mempelajari engine profesional</td>
-                </tr>
-                <tr>
-                    <td>💡 <strong>Crystal Voltage Game</strong></td>
-                    <td class="status-future">🌟 Future Goal</td>
-                    <td>Mengubah ceritaku menjadi game!</td>
-                </tr>
-            </table>
-        </div>
-
-        <!-- Personality & Social -->
-        <div class="card">
-            <h2 class="card-title">🤝 PERSONALITY & SOCIAL</h2>
-            <div class="two-col">
-                <div class="social-box online">
-                    <h3>🌐 ONLINE WORLD</h3>
-                    <div class="social-item">✅ Easy to connect</div>
-                    <div class="social-item">✅ Find similar minds</div>
-                    <div class="social-item">✅ Share interests</div>
-                    <div class="social-item">✅ Build friendships</div>
-                    <p class="social-quote">"Di dunia online, aku menemukan banyak teman yang satu frekuensi!"</p>
+            <!-- DREAM TAB -->
+            <div class="tab-content" id="dream">
+                <div class="tab-header">
+                    <h2>🚀 MY DREAM & JOURNEY 🚀</h2>
+                    <p>Perjalananku menuju cita-cita!</p>
                 </div>
-                <div class="social-box offline">
-                    <h3>🏠 OFFLINE WORLD</h3>
-                    <div class="social-item">⚠️ Shy to start talk</div>
-                    <div class="social-item">⚠️ Hard to approach</div>
-                    <div class="social-item">💪 Still trying!</div>
-                    <div class="social-item">🌱 Growing everyday</div>
-                    <p class="social-quote">"Meski sulit, aku terus berusaha untuk lebih berani!"</p>
+
+                <div class="card">
+                    <h2 class="card-title">🎯 GOAL: GAME DEVELOPER</h2>
+                    <p style="margin-bottom: 30px; color: rgba(255,255,255,0.85); font-size: 1.1rem;">
+                        Cita-citaku adalah menjadi seorang <strong style="color: var(--p5-red);">Game Developer</strong>
+                        profesional!
+                        Aku sudah memiliki nama team sendiri:
+                    </p>
+
+                    <div class="team-banner">
+                        <div class="team-name">☀️ HELIOS.CORP ☀️</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2 class="card-title">📚 Learning Path</h2>
+                    <table class="learning-table">
+                        <tr>
+                            <th>Platform</th>
+                            <th>Status</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td>🎲 <strong>Roblox Studio</strong></td>
+                            <td class="status-progress">🔄 In Progress</td>
+                            <td>Memulai membuat game pertama di Roblox</td>
+                        </tr>
+                        <tr>
+                            <td>🎮 <strong>Unity</strong></td>
+                            <td class="status-planned">📋 Planned</td>
+                            <td>Mempelajari engine profesional</td>
+                        </tr>
+                        <tr>
+                            <td>💡 <strong>Crystal Voltage Game</strong></td>
+                            <td class="status-future">🌟 Future Goal</td>
+                            <td>Mengubah ceritaku menjadi game!</td>
+                        </tr>
+                    </table>
                 </div>
             </div>
-        </div>
 
-        <!-- Connect -->
-        <div class="card" style="text-align: center;">
-            <h2 class="card-title" style="justify-content: center;">💫 CONNECT WITH ME</h2>
-            <h3 style="color: var(--p5-white); margin: 20px 0;">🎮 Let's Be Friends!</h3>
-            <p
-                style="margin-bottom: 30px; color: rgba(255,255,255,0.85); max-width: 600px; margin-left: auto; margin-right: auto;">
-                Jika kamu memiliki <strong style="color: var(--p5-gold);">kesamaan minat</strong> denganku — baik itu
-                tentang game, storytelling, atau game development — jangan ragu untuk berteman denganku!
-            </p>
-            <p style="font-style: italic; color: var(--p5-gold); font-size: 1.1rem;">
-                "Bersama, kita bisa menciptakan sesuatu yang luar biasa!" ✨
-            </p>
+            <!-- SOCIAL TAB -->
+            <div class="tab-content" id="social">
+                <div class="tab-header">
+                    <h2>🤝 PERSONALITY & SOCIAL 🤝</h2>
+                    <p>Bagaimana aku berinteraksi dengan dunia!</p>
+                </div>
+
+                <div class="two-col">
+                    <div class="social-box online">
+                        <h3>🌐 ONLINE WORLD</h3>
+                        <div class="social-item">✅ Easy to connect</div>
+                        <div class="social-item">✅ Find similar minds</div>
+                        <div class="social-item">✅ Share interests</div>
+                        <div class="social-item">✅ Build friendships</div>
+                        <p class="social-quote">"Di dunia online, aku menemukan banyak teman yang satu frekuensi!"</p>
+                    </div>
+                    <div class="social-box offline">
+                        <h3>🏠 OFFLINE WORLD</h3>
+                        <div class="social-item">⚠️ Shy to start talk</div>
+                        <div class="social-item">⚠️ Hard to approach</div>
+                        <div class="social-item">💪 Still trying!</div>
+                        <div class="social-item">🌱 Growing everyday</div>
+                        <p class="social-quote">"Meski sulit, aku terus berusaha untuk lebih berani!"</p>
+                    </div>
+                </div>
+
+                <div class="card" style="text-align: center; margin-top: 30px;">
+                    <h3 style="color: var(--p5-gold); margin-bottom: 20px;">💫 Connect With Me</h3>
+                    <p class="connect-message">
+                        Jika kamu memiliki <span class="connect-highlight">kesamaan minat</span> denganku —
+                        baik itu tentang game, storytelling, atau game development — jangan ragu untuk berteman
+                        denganku!
+                    </p>
+                    <p style="font-style: italic; color: var(--p5-gold); font-size: 1.1rem; margin-top: 20px;">
+                        "Bersama, kita bisa menciptakan sesuatu yang luar biasa!" ✨
+                    </p>
+                </div>
+            </div>
+
         </div>
 
         <!-- Footer -->
@@ -662,6 +889,87 @@
             </p>
         </footer>
     </div>
+
+    <script>
+        // Tab Navigation System
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        let currentTabIndex = 0;
+
+        function getTabIndex(tabId) {
+            const tabs = ['home', 'about', 'hobi', 'games', 'dream', 'social'];
+            return tabs.indexOf(tabId);
+        }
+
+        function switchTab(targetTabId) {
+            const targetIndex = getTabIndex(targetTabId);
+            const isMovingRight = targetIndex > currentTabIndex;
+
+            // Remove active class from all buttons
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Add active class to clicked button
+            document.querySelector(`[data-tab="${targetTabId}"]`).classList.add('active');
+
+            // Animate tabs
+            tabContents.forEach(content => {
+                if (content.classList.contains('active')) {
+                    // Slide out current tab
+                    content.classList.remove('active');
+                    content.style.transform = isMovingRight ? 'translateX(-100%)' : 'translateX(100%)';
+                    content.style.opacity = '0';
+                }
+            });
+
+            // Slide in new tab
+            setTimeout(() => {
+                const targetContent = document.getElementById(targetTabId);
+                targetContent.style.transform = isMovingRight ? 'translateX(100%)' : 'translateX(-100%)';
+
+                setTimeout(() => {
+                    targetContent.classList.add('active');
+                    targetContent.style.transform = 'translateX(0)';
+                    targetContent.style.opacity = '1';
+                }, 50);
+            }, 100);
+
+            currentTabIndex = targetIndex;
+
+            // Re-trigger stat bar animations
+            if (targetTabId === 'home') {
+                const statFills = document.querySelectorAll('#home .stat-fill');
+                statFills.forEach(fill => {
+                    const width = fill.style.width;
+                    fill.style.width = '0';
+                    setTimeout(() => {
+                        fill.style.width = width;
+                    }, 100);
+                });
+            }
+        }
+
+        // Add click event listeners
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                if (tabId !== document.querySelector('.tab-content.active').id) {
+                    switchTab(tabId);
+                }
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const tabs = ['home', 'about', 'hobi', 'games', 'dream', 'social'];
+            if (e.key === 'ArrowRight') {
+                const nextIndex = (currentTabIndex + 1) % tabs.length;
+                switchTab(tabs[nextIndex]);
+            } else if (e.key === 'ArrowLeft') {
+                const prevIndex = (currentTabIndex - 1 + tabs.length) % tabs.length;
+                switchTab(tabs[prevIndex]);
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -1,14 +1,19 @@
 # Dockerfile untuk Portfolio Muhammad Iqbal Ramdhany
-# Menggunakan Nginx untuk serving static files
+# Menggunakan Python Flask untuk serving
 
-FROM nginx:alpine
+FROM python:3.11-slim
 
-# Copy file portfolio ke folder nginx
-COPY index.html /usr/share/nginx/html/index.html
-COPY assets/ /usr/share/nginx/html/assets/
+WORKDIR /app
 
-# Expose port 80
-EXPOSE 80
+# Copy requirements dan install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Nginx sudah otomatis start saat container run
-CMD ["nginx", "-g", "daemon off;"]
+# Copy semua file portfolio
+COPY . .
+
+# Expose port 5000
+EXPOSE 5000
+
+# Jalankan Flask app
+CMD ["python", "app.py"]
